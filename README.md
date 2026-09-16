@@ -27,7 +27,7 @@ Various inputs are defined in the action to configure its operation:
 | Name | Description | Default
 | --- | --- | ---
 | `gemini_api_key`: The Google AI Studio Gemini API key | *required*
-| `issue_number` | The GitHub issue to summarise | &nbsp;
+| `issue_number` | The GitHub issue to treat as stale; if not provided, a stale issue is selected based on the number of days since last update | &nbsp;
 | `dry_run` | Disables actions that modify the issue (adding the comments/labels and closing the issue) for testing | `false`
 
 ## Usage
