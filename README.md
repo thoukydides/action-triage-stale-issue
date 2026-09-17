@@ -1,11 +1,11 @@
 # `action-triage-stale-issue`
 
 This action identifies stale issues and updates them:
-- After 14 days without new user comments, a comment is posted summarising the current status, and a <kbd>stale</kbd> label is added.
-- After a further 7 days, a comment is posted stating that the issue is being closed, and the issue is closed.
+- After 14 days without relevant activity, a comment is posted summarising the current status, and a <kbd>stale</kbd> label is added.
+- After a further 7 days without relevant activity, a comment is posted stating that the issue is being closed, and the issue is closed.
 
 > [!TIP]
-> Each invocation of this action performs each of these steps a maximum of once; schedule it sufficiently frequently for the expected number of stale issues.
+> Each invocation processes at most one issue becoming stale and at most one already-stale issue being closed. Schedule it sufficiently frequently for the expected number of stale issues.
 
 > [!CAUTION]
 > This action is provided for my own use and published in case it is useful to others. If you rely on it, fork and maintain your own copy. No support or stability guarantees are offered.
@@ -27,8 +27,9 @@ Various inputs are defined in the action to configure its operation:
 | Name | Description | Default
 | --- | --- | ---
 | `gemini_api_key`: The Google AI Studio Gemini API key | *required*
-| `issue_number` | The GitHub issue to treat as stale; if not provided, a stale issue is selected based on the number of days since last update | &nbsp;
+| `issue_number` | The GitHub issue to check; if specified, the normal inactivity thresholds are bypassed | &nbsp;
 | `dry_run` | Disables actions that modify the issue (adding the comments/labels and closing the issue) for testing | `false`
+| `github_token` | The GitHub token used to create an authenticated client | `${{ github.token }}`
 
 ## Usage
 
