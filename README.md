@@ -67,7 +67,7 @@ jobs:
       uses: thoukydides/action-triage-stale-issue@v1
       with:
         gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-        issue_number:   ${{ fromJson(inputs.issue_number) }}
+        issue_number:   ${{ inputs.issue_number }}
         dry_run:        ${{ inputs.dry_run == true }}
 ```
 

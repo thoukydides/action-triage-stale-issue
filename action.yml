@@ -35,7 +35,7 @@ runs:
       days_before_stale: 14
       days_before_close: 7
       stale_issue_label: 'stale'
-      issue_number: ${{ fromJson(inputs.issue_number) }}
+      issue_number: ${{ inputs.issue_number }}
       github_token: ${{ inputs.github_token }}
 
   - name: Summarise and label stale issue ${{ steps.select.outputs.stale_issue_number }}
