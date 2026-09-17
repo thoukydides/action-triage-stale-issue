@@ -33,7 +33,7 @@ runs:
       stale-issue-label: 'stale'
       issue_number: ${{ fromJson(inputs.issue_number) }}
 
-  - name: Summarise and label stale issue
+  - name: Summarise and label stale issue ${{ steps.select.outputs.stale_issue_number }}
     if: ${{ steps.select.outputs.stale_issue_number != '' }}
     uses: thoukydides/action-stale-issue-comment@v1
     with:
@@ -42,7 +42,7 @@ runs:
       labels_add: '["stale"]'
       dry_run: ${{ inputs.dry_run }}
 
-  - name: Close stale issue
+  - name: Close stale issue ${{ steps.select.outputs.close_issue_number }}
     if: ${{ steps.select.outputs.close_issue_number != '' }}
     uses: thoukydides/action-post-issue-comment@v1
     with:
